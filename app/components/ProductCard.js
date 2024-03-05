@@ -1,26 +1,29 @@
- import Link from 'next/link';
-import Image from "next/image";
 
-export default function ProductCard({ id, name, description, price }) {
-  const imagePath = `/images/${id === '1' ? 'nirvana1' : 'vaseazul1'}.jpg`;
+import { useState } from 'react';
+import Image from 'next/image';
+import ProductDetailModal from './ProductDetailModal'; // Ensure this path is correct
+
+export default function ProductCard({ product }) {
+  const [isModalOpen, setModalOpen] = useState(false);
+
+  const openModal = () => setModalOpen(true);
+  const closeModal = () => setModalOpen(false);
 
   return (
-    <Link href={`/product/${id}`}>
-      <div className="transition duration-300 ease-in-out transform hover:-translate-y-1 hover:shadow-lg bg-white rounded-lg overflow-hidden">
-        <div className="relative w-full h-64">
-          <Image
-            src={imagePath}
-            alt={name}
-            className="object-cover object-center w-full h-full"
-            fill
-            sizes="100vw" />
-        </div>
-        <div className="p-4">
-          <h2 className="text-2xl font-semibold mb-2">{name}</h2>
-          <p className="text-gray-700 text-sm mb-4">{description}</p>
-          <p className="text-gray-900 font-semibold">{price}</p>
-        </div>
+    <div className="product-card-container">
+      <div className="product-card" onClick={openModal}>
+        <Image src={product.imagePath || '/default-image.jpg'} alt={product.name} width={250} height={250} />
+        <h3>{product.name}</h3>
+        <p>{product.description}</p>
+        <p>{product.price}</p>
       </div>
-    </Link>
+      {isModalOpen && (
+        <ProductDetailModal
+          isOpen={isModalOpen}
+          product={product}
+          onClose={closeModal}
+        />
+      )}
+    </div>
   );
 }
