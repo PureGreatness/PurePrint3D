@@ -5,15 +5,15 @@ export default function Navbar() {
       <nav className="bg-black text-white py-4 px-8 flex items-center justify-between">
         <div className="flex items-center">
           {/* Logotipo e nome da loja */}
-          <img src="/path-to-your-logo.svg" alt="Logotipo" className="h-8 mr-2" />
+          <img src="/images/logopureprint.jpg" alt="Logotipo" className="h-8 mr-2" />
           <span className="font-bold text-xl">PurePrint3D</span>
         </div>
-        <div className="flex space-x-4">
+        {<div className="flex space-x-4">
           {/* Links de navegação */}
-          <a href="#" className="hover:text-gray-300">All</a>
-          <a href="#" className="hover:text-gray-300">Categorias</a>
+          {/* <a href="#" className="hover:text-gray-300">All</a>
+          <a href="#" className="hover:text-gray-300">Categorias</a> */}
           {/* <a href="#" className="hover:text-gray-300">Stickers</a> */}
-        </div>
+        </div>}
         <div className="flex items-center">
           {/* Barra de pesquisa */}
           <input

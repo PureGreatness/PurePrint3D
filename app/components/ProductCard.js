@@ -1,5 +1,5 @@
-import Link from 'next/link';
-import Image from 'next/image';
+ import Link from 'next/link';
+import Image from "next/image";
 
 export default function ProductCard({ id, name, description, price }) {
   const imagePath = `/images/${id === '1' ? 'nirvana1' : 'vaseazul1'}.jpg`;
@@ -12,8 +12,8 @@ export default function ProductCard({ id, name, description, price }) {
             src={imagePath}
             alt={name}
             className="object-cover object-center w-full h-full"
-            layout="fill"
-          />
+            fill
+            sizes="100vw" />
         </div>
         <div className="p-4">
           <h2 className="text-2xl font-semibold mb-2">{name}</h2>
